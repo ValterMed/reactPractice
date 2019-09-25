@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Home from './Home';
-import ArticleList from './ArticleList';
-import ArticleAdd from './ArticleAdd';
-import ArticleInfo from './ArticleInfo';
-import ArticleEdit from './ArticleEdit';
-import {HashRouter as Route, Switch} from 'react-router-dom'
+import ArticleList from './articles/ArticleList';
+import ArticleAdd from './articles/ArticleAdd';
+import ArticleInfo from './articles/ArticleInfo';
+import ArticleEdit from './articles/ArticleEdit';
+import {Route, Switch} from 'react-router-dom'
 
 class Routes extends Component {
   render() {

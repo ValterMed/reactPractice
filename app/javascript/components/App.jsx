@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Home from './Home';
 import Menu from './Menu';
 import Routes from './Routes';
-import {HashRouter as Router, Route, Switch} from 'react-router-dom'
+import {HashRouter as Router} from 'react-router-dom'
 
 class App extends Component {
   render() {
@@ -11,7 +10,6 @@ class App extends Component {
         <Router>
           <div className="container">
             <Menu />
-            <Home />
             <Routes />
           </div>
         </Router>
