@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Form from '../Form';
+import { get } from 'http';
 
 class ArticleEdit extends Component {
   constructor() {
@@ -20,8 +22,8 @@ class ArticleEdit extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    fetch('api/articles', {
-        method: 'POST',
+    fetch(`api/articles/${this.props.match.params.id}`, {
+        method: 'PUT',
         body: JSON.stringify(this.state),     
         headers: {'Content-Type': 'application/json' }
       })
@@ -41,26 +43,24 @@ class ArticleEdit extends Component {
   }
 
   render() {
+    const settings = {
+      title: this.state.title,
+      content: this.state.content,
+      headTitle: 'Edit Article Post', 
+      buttonName: 'Edit'
+    };
+    const actions = {
+      handleSubmit: this.handleSubmit,
+      handleChange: this.handleChange,
+      handleCancel: this.handleCancel
+    };
     return (
       <div>
-        <h1>Edit Article Post</h1>
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label>Title</label>
-            <input type="text" name="title" value={this.state.title} onChange={this.handleChange} className="form-control" />
-          </div>
-          <div className="form-group">
-            <label>Content</label>
-            <textarea name="content" rows="5" value={this.state.content} onChange={this.handleChange} className="form-control" />
-          </div>
-          <div className="btn-group">
-            <button type="submit" className="btn btn-dark">Create</button>
-            <button type="button" onClick={this.handleCancel} className="btn btn-secondary">Cancel</button>
-          </div>
-        </form>
+        <Form settings={settings} actions={actions}/>
       </div>
     );
   }
 }
 
 export default ArticleEdit;
+
