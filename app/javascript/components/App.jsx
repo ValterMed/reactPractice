@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Menu from './Menu';
 import Routes from './Routes';
-import configureStore from '../configureStore';
+import configureStore from '../store';
 import {Provider} from 'react-redux';
 import {HashRouter as Router} from 'react-router-dom'
 

@@ -1,23 +1,8 @@
-import {
-  ADD_ARTICLE,
-  REMOVE_ARTICLE
-} from '../constants/actionTypes';
+import {combineReducers} from 'redux';
+import articlesReducer from './articles';
 
-function articlesReducer(state = [], action) {
-  switch(action.type){
-    case ADD_ARTICLE:
-      return {
-        
-      };
-    case REMOVE_ARTICLE:
-      return {
-        
-      };
-    default:
-      return {
+const reducers = combineReducers({
+  articlesReducer: articlesReducer
+});
 
-      };
-  }
-}
-
-export default articlesReducer;
+export default reducers;

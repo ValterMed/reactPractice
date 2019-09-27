@@ -1,23 +1,36 @@
 import {
   ADD_ARTICLE,
-  REMOVE_ARTICLE
+  EDIT_ARTICLE,
+  INFO_ARTICLE,
+  REMOVE_ARTICLE,
+  ALL_ARTICLES
 } from '../constants/actionTypes';
 
-function articles(state = [], action) {
+function articlesReducer(state = [], action) {
   switch(action.type){
     case ADD_ARTICLE:
       return {
         
-      };
-    case REMOVE_ARTICLE:
+    };
+    case EDIT_ARTICLE:
       return {
         
-      };
-    default:
+    };
+    case INFO_ARTICLE:
       return {
-
-      };
+            
+    };
+    case REMOVE_ARTICLE:
+      return {
+              
+    };
+    case ALL_ARTICLES:
+      return {
+                
+    };
+    
+    default:
+      return {}
   }
 }
-
-export default articles;
+export default articlesReducer;
