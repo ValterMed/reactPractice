@@ -9,9 +9,10 @@ import {
 function articlesReducer(state = [], action) {
   switch(action.type){
     case ADD_ARTICLE:
-      return {
-        
-    };
+      return [
+        ...state,
+        {id: 'asdf', title: action.title, content: action.content}
+      ];
     case EDIT_ARTICLE:
       return {
         
@@ -30,7 +31,7 @@ function articlesReducer(state = [], action) {
     };
     
     default:
-      return {}
+      return state
   }
 }
 export default articlesReducer;
