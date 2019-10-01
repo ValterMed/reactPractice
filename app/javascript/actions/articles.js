@@ -7,6 +7,7 @@ import {
 } from '../constants/actionTypes';
 
 export function addArticle(title, content) {
+  console.log("estoy en funcion addArticle")
   return {
     type: ADD_ARTICLE,
     title: title,
@@ -21,9 +22,10 @@ export function removeArticle(id) {
   };
 }
 
-export function allArticles() {
+export function allArticles(data) {
   return {
-    type: ALL_ARTICLES
+    type: ALL_ARTICLES,
+    data: data
   };
 }
 

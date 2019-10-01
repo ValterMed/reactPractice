@@ -9,6 +9,7 @@ import {
 function articlesReducer(state = [], action) {
   switch(action.type){
     case ADD_ARTICLE:
+      console.log("llegamos a la funcion switch")
       return [
         ...state,
         {id: 'asdf', title: action.title, content: action.content}
@@ -26,9 +27,10 @@ function articlesReducer(state = [], action) {
               
     };
     case ALL_ARTICLES:
-      return {
-                
-    };
+      return [
+        ...state,
+        {data: action.data}
+      ];
     
     default:
       return state

@@ -3,6 +3,7 @@ import Styled from 'styled-components';
 
 class Form extends Component {
   render() {
+    console.log("Estamos entrando al Form")
     const Button = Styled.button`
       cursor: pointer;
       background: transparent;

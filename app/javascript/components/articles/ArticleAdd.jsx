@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Form from '../Form';
+//import {connect} from 'react-redux';
+//import ArticleList from './ArticleList';
 
 class ArticleAdd extends Component {
   constructor() {
@@ -51,5 +53,24 @@ class ArticleAdd extends Component {
     );
   }
 }
+
+/*function mapStateToProps(state) {
+  console.log("funcion mapStateToProps")
+  console.log(state)
+  return {
+    articles: state.articles
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  console.log("funcion mapDispatchToProps")
+  return {
+    createArticle: (title, content) => dispatch(addArticle(title, content))
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleList);
+*/
 
 export default ArticleAdd;
