@@ -1,30 +1,33 @@
 import React, { Component} from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux'
-import {addArticle, allArticles} from '../../actions/articles';
-import {allArticle} from '../../actions/articles';
+import {loadArticles} from '../../actions/loadArticles'
 
 class ArticleList extends Component {
   constructor () {
     console.log("Estamos en el constructor");
     super();
-    this.state = {articles: []};
+    //this.state = {articles: []};
   }
 
   componentDidMount() {
+    console.log(this.props)
+    debugger
+    /*
     fetch('api/articles')
       .then(response => response.json())
       .then(data => {
         this.setState({articles: data});
       })
       .catch(error => console.log('error', error));
+    */
   }
   render() {
     console.log("estamos en el renderizado de la pagina");
     console.log(this.state);
     return (
       <div>
-        {this.state.articles.map((article) => {
+        {this.props.articles.map((article) => {
           return(
             <div key={article.id}>
               <h2><Link to={`/articles/${article.id}`}>{article.title}</Link></h2>
@@ -45,20 +48,16 @@ class ArticleList extends Component {
 </button>
 */
 function mapStateToProps(state) {
-  console.log("funcion mapStateToProps")
-  console.log(state)
+  console.log("walterMedina")
   return {
     articles: state.articles
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  console.log("funcion mapDispatchToProps")
   return {
-    createArticle: (data) => dispatch(allArticles(data))
+    createArticle: () => dispatch(loadArticles())
   };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleList);
-
-//export default ArticleList;
