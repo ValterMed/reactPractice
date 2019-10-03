@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import Menu from './Menu';
 import Routes from './Routes';
-import configureStore from '../store/store';
+import configureStore from '../src/store/store';
 import {Provider} from 'react-redux';
 import {HashRouter as Router} from 'react-router-dom';
-import {loadArticles} from '../actions/loadArticles'
 
-const store = configureStore();
-store.dispatch(loadArticles());
+const store = configureStore;
 
 class App extends Component {
   render() {

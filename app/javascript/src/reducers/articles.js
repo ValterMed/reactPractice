@@ -3,7 +3,8 @@ import {
   EDIT_ARTICLE,
   INFO_ARTICLE,
   REMOVE_ARTICLE,
-  ALL_ARTICLES
+  ALL_ARTICLES,
+  LOAD_ARTICLES_SUCCESS
 } from '../constants/actionTypes';
 
 function articlesReducer(state = [], action) {
@@ -27,10 +28,12 @@ function articlesReducer(state = [], action) {
               
     };
     case ALL_ARTICLES:
-      return [
-        ...state,
-        {data: action.data}
-      ];
+      return {
+
+    };
+
+    case LOAD_ARTICLES_SUCCESS:
+      return action.articles
     
     default:
       return state

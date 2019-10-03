@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux'
-import {loadArticles} from '../../actions/loadArticles'
+import {loadArticles} from '../../src/actions/loadArticles'
 
 class ArticleList extends Component {
   constructor () {
@@ -11,8 +11,8 @@ class ArticleList extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
-    debugger
+    console.log("estamos en componentDidMount") 
+    this.props.listArticles();
     /*
     fetch('api/articles')
       .then(response => response.json())
@@ -24,7 +24,7 @@ class ArticleList extends Component {
   }
   render() {
     console.log("estamos en el renderizado de la pagina");
-    console.log(this.state);
+    console.log(this.props);
     return (
       <div>
         {this.props.articles.map((article) => {
@@ -42,21 +42,18 @@ class ArticleList extends Component {
   }
 }
 
-/*
-<button onClick={() => this.props.createArticle('Hola', 'Holi')} className="btn btn-outline-primary">      
-  Create Article
-</button>
-*/
 function mapStateToProps(state) {
-  console.log("walterMedina")
+  console.log("estamos en mapStateToProps");
+  console.log(state.articles);
   return {
     articles: state.articles
   };
 }
 
 function mapDispatchToProps(dispatch) {
+  console.log("estamos en mapDispatchToProps");
   return {
-    createArticle: () => dispatch(loadArticles())
+    listArticles: () => dispatch(loadArticles())
   };
 }
 
