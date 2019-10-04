@@ -1,17 +1,20 @@
 import React, { Component} from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux'
-import {loadArticles} from '../../src/actions/loadArticles'
+import {loadArticles} from '../../src/actions/articles'
 
 class ArticleList extends Component {
   constructor () {
-    console.log("Estamos en el constructor");
+    console.log("Estamos en el constructor de ArticleList");
     super();
+    //this.props.listArticles();
+    //console.log(props);
+
     //this.state = {articles: []};
   }
 
   componentDidMount() {
-    console.log("estamos en componentDidMount") 
+    console.log("estamos en componentDidMount");
     this.props.listArticles();
     /*
     fetch('api/articles')
