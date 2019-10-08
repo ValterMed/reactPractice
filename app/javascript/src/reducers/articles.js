@@ -5,17 +5,26 @@ import {
   REMOVE_ARTICLE,
   ALL_ARTICLES,
   LOAD_ARTICLES_SUCCESS,
-  LOAD_ARTICLE_SUCCESS
+  LOAD_ARTICLE_SUCCESS,
+  PUSH_ARTICLE_SUCCESS
 } from '../constants/actionTypes';
 
-function articlesReducer(state = [], action) {
+const articlesState = {
+  articles: [],
+  currentArticle: {}
+};
+
+function articlesReducer(state = articlesState, action) {
   console.log("llegamos a la funcion switch de /reducers/articles");
   switch(action.type){
     case ADD_ARTICLE:
-      return [
+      return {
         ...state,
-        {id: 'asdf', title: action.title, content: action.content}
-      ];
+        articles: [
+          ...state.articles,
+          {title: action.title, content: action.content}
+        ]
+      };
     case EDIT_ARTICLE:
       return {
         
@@ -34,10 +43,23 @@ function articlesReducer(state = [], action) {
     };
 
     case LOAD_ARTICLES_SUCCESS:
-      return action.articles
+      return {
+        ...state,
+        articles: action.articles
+      };
 
     case LOAD_ARTICLE_SUCCESS:
-      return [action.article];
+      console.log("devuelvo un articulo")
+      return {
+        ...state,
+        currentArticle: action.article
+      };
+
+    case PUSH_ARTICLE_SUCCESS:
+      return {
+        ...state,
+        data: action.data
+      }
     
     default:
       console.log("Se devuelve el valor por default en /reducers/articles");

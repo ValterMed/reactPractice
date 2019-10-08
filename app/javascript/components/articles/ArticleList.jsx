@@ -49,7 +49,7 @@ function mapStateToProps(state) {
   console.log("estamos en mapStateToProps");
   console.log(state.articles);
   return {
-    articles: state.articles
+    articles: state.articlesReducer.articles
   };
 }
 

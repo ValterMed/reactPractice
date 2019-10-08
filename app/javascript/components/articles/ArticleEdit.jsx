@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Form from '../Form';
-import { get } from 'http';
+import {connect} from 'react-redux'
+import {loadArticle, dataRecovery} from '../../src/actions/articles'
 
 class ArticleEdit extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { title: '', content: ''};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -12,6 +13,8 @@ class ArticleEdit extends Component {
   }
 
   componentDidMount() {
+    //se utiliza para llenar el state con el articulo:
+    //this.props.getArticle(this.props.match.params.id);
     fetch(`api/articles/${this.props.match.params.id}`)
       .then(response => response.json())
       .then(data => {
@@ -22,9 +25,10 @@ class ArticleEdit extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    //this.props.articleEdit(this.props.match.params.id, this.props.history);
     fetch(`api/articles/${this.props.match.params.id}`, {
         method: 'PUT',
-        body: JSON.stringify(this.state),     
+        body: JSON.stringify(this.state),
         headers: {'Content-Type': 'application/json' }
       })
       .then(response => response.json())
@@ -62,5 +66,24 @@ class ArticleEdit extends Component {
   }
 }
 
-export default ArticleEdit;
+/*
+function mapStateToProps(state) {
+  console.log("estamos en mapStateToProps de ArticleInfo");
+  return {
+    article: state.articlesReducer.currentArticle,
+    data: state.articlesReducer.data
+  };
+}
 
+function mapDispatchToProps(dispatch) {
+  console.log("estamos en mapDispatchToProps de ArticleInfo");
+  return {
+    getArticle: (id, history) => dispatch(loadArticle(id, history)),
+    articleEdit: (id) => dispatch(dataRecovery(id))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleEdit);
+*/
+
+export default ArticleEdit;

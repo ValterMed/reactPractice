@@ -7,7 +7,8 @@ import {
   ALL_ARTICLES,
   LOAD_ARTICLES_SUCCESS,
   LOAD_ARTICLE_SUCCESS,
-  DELETE_ARTICLE_SUCCESS
+  DELETE_ARTICLE_SUCCESS,
+  PUSH_ARTICLE_SUCCESS
 
 } from '../constants/actionTypes';
 
@@ -78,6 +79,7 @@ export function loadArticle(id) {
 }
 
 function loadArticleSuccess(article) {
+  console.log("se cargo el articulo correctamente")
   return {
     type: LOAD_ARTICLE_SUCCESS,
     article
@@ -85,10 +87,10 @@ function loadArticleSuccess(article) {
 }
 
 
-export function deleteOneArticle(props) {
+export function deleteOneArticle(id) {
   console.log("LLEGAMOS A deleteOneArticle invocado desde ArticleInfo")
   return function(dispatch) {
-    return articleApi.deleteArticle(props).then(() => {
+    return articleApi.deleteArticle(id).then(() => {
       dispatch(deleteSuccess());
     }).catch(error => {
       throw(error);
@@ -99,5 +101,22 @@ export function deleteOneArticle(props) {
 function deleteSuccess() {
   return {
     type: DELETE_ARTICLE_SUCCESS
+  };
+}
+
+export function dataRecovery(id, history) {
+  return function(dispatch) {
+    return articleApi.pushArticle(id, history).then(() => {
+      dispatch(pushSuccess());
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
+
+function pushSuccess() {
+  return {
+    type: PUSH_ARTICLE_SUCCESS,
+    data
   };
 }
